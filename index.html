@@ -3,85 +3,461 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Puffles 💗</title>
+
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
-  margin:0; min-height:100vh; overflow-x:hidden;
-  font-family:Arial,sans-serif; text-align:center; color:#5b3048;
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:Arial,sans-serif;
+  text-align:center;
+  color:#5b3048;
   background:linear-gradient(135deg,#ffe1ec,#fff3f7,#e9ddff);
 }
-.container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:25px}
+
+.container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
 .card{
-  width:min(700px,94vw); padding:42px 25px; border-radius:30px;
-  background:rgba(255,255,255,.72); backdrop-filter:blur(12px);
+  width:min(700px,94vw);
+  padding:42px 25px;
+  border-radius:30px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(12px);
   box-shadow:0 15px 50px rgba(100,50,100,.18);
+  position:relative;
+  z-index:2;
 }
-h1{font-size:clamp(42px,10vw,76px);margin:8px 0;color:#d94f83}
-h2{font-size:30px;margin:10px}
-p{font-size:18px;line-height:1.7}
+
+h1{
+  font-size:clamp(42px,10vw,76px);
+  margin:8px 0;
+  color:#d94f83;
+}
+
+h2{
+  font-size:30px;
+  margin:10px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+}
+
 button{
-  border:0;border-radius:30px;padding:15px 25px;margin:12px;
-  font-size:16px;font-weight:bold;cursor:pointer;
-  background:#d94f83;color:white;box-shadow:0 8px 20px #d94f8350;
+  border:0;
+  border-radius:30px;
+  padding:15px 25px;
+  margin:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#d94f83;
+  color:white;
+  box-shadow:0 8px 20px #d94f8350;
 }
-#surprise{display:none;margin-top:25px}
-.verse{font-style:italic;background:#fff;padding:18px;border-radius:18px;margin-top:20px}
-.balloon{position:fixed;bottom:-100px;font-size:45px;animation:float 7s linear infinite;z-index:-1}
-@keyframes float{to{transform:translateY(-115vh) rotate(15deg)}}
-.heart{position:fixed;top:-30px;font-size:22px;animation:fall 5s linear infinite}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="card">
-    <div style="font-size:55px">🎂✨💗</div>
-    <p>Today is a very special day...</p>
-    <h1>Happy Birthday<br>Puffles! 💕</h1>
-    <h2>To someone truly special 🌷</h2>
-    <p>
-      May your 18th year be filled with beautiful memories, genuine smiles,
-      unexpected blessings and dreams coming true. You deserve all the
-      happiness this new chapter can bring. 💗
-    </p>
-    <button onclick="showSurprise()">💌 Open Your Surprise</button>
 
-    <div id="surprise">
-      <h2>🌸 A Little Birthday Message 🌸</h2>
-      <p>
-        Never forget how precious you are. Keep being the wonderful person
-        you are, keep smiling, keep dreaming, and keep moving forward.
-        May God guide every step you take and surround you with love,
-        peace and countless blessings. 🥹💗
-      </p>
-      <div class="verse">
-        “This is the day the Lord has made; let us rejoice and be glad in it.”
-        <br><b>— Psalm 118:24</b>
-      </div>
-      <p style="font-size:25px">🎉 Happy Birthday, Puffles! 🎉</p>
-    </div>
-  </div>
-</div>
+button:active{
+  transform:scale(.96);
+}
 
-<script>
-function showSurprise(){
-  document.getElementById("surprise").style.display="block";
-  for(let i=0;i<25;i++){
-    const h=document.createElement("div");
-    h.className="heart"; h.textContent=["💗","💕","✨","🌸"][Math.floor(Math.random()*4)];
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDelay=Math.random()*2+"s";
-    document.body.appendChild(h);
+#surprise{
+  display:none;
+  margin-top:25px;
+  animation:appear 1s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
-for(let i=0;i<12;i++){
-  const b=document.createElement("div");
-  b.className="balloon"; b.textContent=["🎈","🎈","💗","🎈"][i%4];
-  b.style.left=Math.random()*100+"vw";
-  b.style.animationDelay=Math.random()*7+"s";
-  document.body.appendChild(b);
+
+.verse{
+  font-style:italic;
+  background:#fff;
+  padding:18px;
+  border-radius:18px;
+  margin-top:20px;
 }
+
+/* PHOTO SECTION */
+
+.gallery{
+  margin-top:35px;
+}
+
+.gallery h2{
+  color:#d94f83;
+  margin-bottom:20px;
+}
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.photos img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(100,50,100,.20);
+  transition:transform .3s ease;
+}
+
+.photos img:hover{
+  transform:scale(1.03);
+}
+
+/* SLIDESHOW */
+
+.slideshow{
+  margin-top:30px;
+}
+
+.slideshow img{
+  width:100%;
+  max-height:400px;
+  object-fit:cover;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(100,50,100,.25);
+}
+
+.slideText{
+  margin-top:12px;
+  font-size:16px;
+  color:#a13f68;
+}
+
+/* FLOATING BALLOONS */
+
+.balloon{
+  position:fixed;
+  bottom:-100px;
+  font-size:45px;
+  animation:float 7s linear infinite;
+  z-index:1;
+  pointer-events:none;
+}
+
+@keyframes float{
+  to{
+    transform:translateY(-115vh) rotate(15deg);
+  }
+}
+
+/* FALLING HEARTS */
+
+.heart{
+  position:fixed;
+  top:-30px;
+  font-size:22px;
+  animation:fall 5s linear infinite;
+  pointer-events:none;
+  z-index:5;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+  .card{
+    padding:30px 18px;
+  }
+
+  .photos{
+    grid-template-columns:1fr;
+  }
+
+  .photos img{
+    height:250px;
+  }
+
+  h2{
+    font-size:25px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <div style="font-size:55px">
+      🎂✨💗
+    </div>
+
+    <p>
+      Today is a very special day...
+    </p>
+
+    <h1>
+      Happy Birthday<br>
+      Puffles! 💕
+    </h1>
+
+    <h2>
+      To someone truly special 🌷
+    </h2>
+
+    <p>
+      May your 18th year be filled with beautiful memories,
+      genuine smiles, unexpected blessings and dreams coming true.
+      You deserve all the happiness this new chapter can bring. 💗
+    </p>
+
+    <button onclick="showSurprise()">
+      💌 Open Your Surprise
+    </button>
+
+
+    <!-- SURPRISE -->
+
+    <div id="surprise">
+
+      <h2>
+        🌸 A Little Birthday Message 🌸
+      </h2>
+
+      <p>
+        Never forget how precious you are.
+        Keep being the wonderful person you are,
+        keep smiling, keep dreaming, and keep moving forward.
+        May God guide every step you take and surround you
+        with love, peace and countless blessings. 🥹💗
+      </p>
+
+      <div class="verse">
+
+        “This is the day the Lord has made;
+        let us rejoice and be glad in it.”
+
+        <br><br>
+
+        <b>— Psalm 118:24</b>
+
+      </div>
+
+
+      <p style="font-size:25px">
+        🎉 Happy Birthday, Puffles! 🎉
+      </p>
+
+
+      <!-- SLIDESHOW -->
+
+      <div class="slideshow">
+
+        <h2>
+          💗 Special Memories 💗
+        </h2>
+
+        <img id="mainPhoto"
+             src="IMG-20260811-WA0000.jpg"
+             alt="Beautiful memory">
+
+        <div class="slideText">
+          A beautiful memory with a beautiful person. 🌸
+        </div>
+
+      </div>
+
+
+      <!-- ALL PHOTOS -->
+
+      <div class="gallery">
+
+        <h2>
+          📸 Our Beautiful Memories
+        </h2>
+
+        <div class="photos">
+
+          <img
+            src="IMG-20260811-WA0000.jpg"
+            alt="Memory 1">
+
+          <img
+            src="IMG-20260811-WA0032.jpg"
+            alt="Memory 2">
+
+          <img
+            src="IMG-20260813-WA0019.jpg"
+            alt="Memory 3">
+
+          <img
+            src="IMG-20260817-WA0096.jpg"
+            alt="Memory 4">
+
+          <img
+            src="IMG-20260821-WA0025.jpg"
+            alt="Memory 5">
+
+          <img
+            src="IMG-20260825-WA0049.jpg"
+            alt="Memory 6">
+
+        </div>
+
+      </div>
+
+
+      <p style="font-size:28px;margin-top:35px">
+        💕 🌸 💗 ✨ 💗 🌸 💕
+      </p>
+
+      <p>
+        May this new chapter of your life
+        be even more beautiful than the last. 🥹
+      </p>
+
+      <p style="font-size:22px">
+        With lots of love 💗
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* OPEN SURPRISE */
+
+function showSurprise(){
+
+  document.getElementById("surprise").style.display="block";
+
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior:"smooth"
+  });
+
+  /* Falling hearts */
+
+  for(let i=0;i<35;i++){
+
+    const h=document.createElement("div");
+
+    h.className="heart";
+
+    h.textContent=[
+      "💗",
+      "💕",
+      "✨",
+      "🌸",
+      "💖"
+    ][Math.floor(Math.random()*5)];
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.animationDelay=Math.random()*3+"s";
+
+    h.style.fontSize=(16+Math.random()*18)+"px";
+
+    document.body.appendChild(h);
+
+  }
+
+}
+
+
+/* BALLOONS */
+
+for(let i=0;i<15;i++){
+
+  const b=document.createElement("div");
+
+  b.className="balloon";
+
+  b.textContent=[
+    "🎈",
+    "🎈",
+    "💗",
+    "🎈",
+    "💕"
+  ][i%5];
+
+  b.style.left=Math.random()*100+"vw";
+
+  b.style.animationDelay=Math.random()*7+"s";
+
+  b.style.fontSize=(30+Math.random()*25)+"px";
+
+  document.body.appendChild(b);
+
+}
+
+
+/* PHOTO SLIDESHOW */
+
+const photos=[
+
+  "IMG-20260811-WA0000.jpg",
+  "IMG-20260811-WA0032.jpg",
+  "IMG-20260813-WA0019.jpg",
+  "IMG-20260817-WA0096.jpg",
+  "IMG-20260821-WA0025.jpg",
+  "IMG-20260825-WA0049.jpg"
+
+];
+
+let currentPhoto=0;
+
+setInterval(function(){
+
+  currentPhoto++;
+
+  if(currentPhoto>=photos.length){
+    currentPhoto=0;
+  }
+
+  const photo=document.getElementById("mainPhoto");
+
+  photo.style.opacity="0";
+
+  setTimeout(function(){
+
+    photo.src=photos[currentPhoto];
+
+    photo.style.opacity="1";
+
+  },300);
+
+},3500);
+
 </script>
+
 </body>
 </html>
